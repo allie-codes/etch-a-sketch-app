@@ -1,10 +1,26 @@
+// TODO
+// refactor EVERYTHING, put most things into functions?
+// create mockup of UI
+// move crucial UI components to index.html
+// allow user to change size
+// allow user to change color
+// allow user to use a freestyle color mode
+// color palettes?
+// think of a better name lol
+// add etch a sketch mode or drawing mode, or maybe a "precision mode" toggle
+// add little question mark popup explaining precision mode
+// make current "mode" highlighted, as in draw or erase mode, etc
+
 let app = document.querySelector("#app");
 let ui = document.querySelector("#ui");
 let container = document.querySelector("#container");
-let eraseButton = document.createElement("button");
-eraseButton.textContent = "Erase Mode";
-let drawButton = document.createElement("button");
-drawButton.textContent = "Draw Mode";
+// let eraseButton = document.createElement("button");
+// eraseButton.textContent = "Erase Mode";
+let eraseButton = document.querySelector(".erase-button");
+// let drawButton = document.createElement("button");
+// drawButton.textContent = "Draw Mode";
+let drawButton = document.querySelector(".draw-button");
+drawButton.classList.add("active-mode");
 let gridButton = document.createElement("button");
 gridButton.textContent = "Toggle Grid";
 let clearGrid = document.createElement("button");
@@ -12,8 +28,13 @@ clearGrid.textContent = "Clear ";
 
 let gridSize = 8;
 
+const createGrid = () => {};
+
 for (let i = 0; i < 256; i++) {
   let square = document.createElement("div");
+  container.style.gridTemplateColumns = `repeat(16, 1fr)`;
+  container.style.gridTemplateRows = `repeat(16, 1fr)`;
+
   square.classList.add("square");
   square.addEventListener("mouseenter", () => {
     square.classList.add("square-mouseover");
@@ -34,6 +55,8 @@ eraseButton.addEventListener("click", () => {
       child.classList.remove("square-mouseover");
     });
   }
+  eraseButton.classList.add("active-mode");
+  drawButton.classList.remove("active-mode");
 });
 
 drawButton.addEventListener("click", () => {
@@ -44,6 +67,8 @@ drawButton.addEventListener("click", () => {
       child.classList.add("square-mouseover");
     });
   }
+  drawButton.classList.add("active-mode");
+  eraseButton.classList.remove("active-mode");
 });
 
 gridButton.addEventListener("click", () => {
@@ -68,8 +93,6 @@ clearGrid.addEventListener("click", () => {
   }
 });
 
-ui.appendChild(eraseButton);
-ui.appendChild(drawButton);
 ui.appendChild(gridButton);
 ui.appendChild(clearGrid);
 
@@ -80,9 +103,9 @@ ui.appendChild(clearGrid);
 //   count = count * 2;
 // }
 
-const ul = document.getElementById("authors");
-const list = document.createDocumentFragment();
-const url = "https://jsonplaceholder.typicode.com/users";
+// const ul = document.getElementById("authors");
+// const list = document.createDocumentFragment();
+// const url = "https://jsonplaceholder.typicode.com/users";
 
 // fetch(
 //   "https://api.edamam.com/api/recipes/v2?type=public&q=potato&app_id=9f58ebd3&app_key=b86e1b6643a79093228da383811f2fbd&random=false"

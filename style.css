@@ -6,6 +6,8 @@ body {
   color: #ecf0f1;
   font-family: "Lexend Deca", sans-serif;
   box-sizing: border-box;
+  /* cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"),
+    default; */
 }
 
 #app {
@@ -21,8 +23,7 @@ body {
   display: grid;
   /* grid-template-columns: repeat(16, 24px);
   grid-template-rows: repeat(16, 24px); */
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
+
   justify-content: center;
   padding: 0;
   margin: 3rem 0;
@@ -38,8 +39,8 @@ body {
 
 #ui {
   border-left: 1px solid white;
-  border-top: 3px solid white;
-  border-radius: 10px 0 0 0;
+  /* border-top: 3px solid white; */
+  /* border-radius: 10px 0 0 0; */
   padding-top: 2rem;
   padding-left: 0;
   padding: 2rem;
@@ -51,7 +52,18 @@ body {
   justify-content: center; */
 }
 
-button {
+.actions-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
+.actions-container i {
+  font-size: 1.5rem;
+}
+
+.ui-button {
   background-color: #00c89f;
   padding: 0.5rem 0;
   border: 0;
@@ -63,12 +75,36 @@ button {
   display: block;
   margin: 2rem auto;
 }
-button:hover {
+.ui-button:hover {
   background-color: #007e62;
   background-color: #007e62;
   border: 5px solid white;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.action-button {
+  border-radius: 50%;
+  background-color: none;
+  display: inline-block;
+  font-size: 1.75rem;
+  padding: 10px;
+  background-color: #0a0239;
+  border: 3px solid white;
+  color: white;
+}
+.action-button:hover {
+  color: #007e62;
+  border-color: #007e62;
+  transform: rotate(300deg);
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.active-mode {
+  color: #007e62;
+  /* border-color: #007e62; */
 }
 
 h1 {
@@ -114,4 +150,11 @@ footer a {
 
 footer a:hover {
   color: #007e62;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
